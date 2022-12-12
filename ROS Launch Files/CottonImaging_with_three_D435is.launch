@@ -1,0 +1,121 @@
+<launch>
+   
+  <!-- Multi-cameras Cotton Imaging with 3 D435is -->
+   
+  <!-- Cameras -->
+  <include file="/opt/ros/melodic/share/realsense2_camera/launch/rs_rgbd.launch">
+	<arg name="camera" value="camera1"/>
+    	<arg name="serial_no" value="044322070446"/>
+	<arg name="align_depth" value="true"/>
+  </include>
+
+  <include file="/opt/ros/melodic/share/realsense2_camera/launch/rs_rgbd.launch">
+	<arg name="camera" value="camera2"/>
+    	<arg name="serial_no" value="034422073886"/>
+	<arg name="align_depth" value="true"/>
+  </include>
+
+  <include file="/opt/ros/melodic/share/realsense2_camera/launch/rs_rgbd.launch">
+	<arg name="camera" value="camera3"/>
+    	<arg name="serial_no" value="044122070445"/>
+	<arg name="align_depth" value="true"/>
+  </include>
+
+  <!-- Frames: D435is are placed at ... -->
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera1_tf"
+      args="-0.5 0.0 0.0 0.0 0.0 0.0 /base_link /camera1_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera2_tf"
+      args="0.5 0.04 0.0 -3.1415926536 0.0 0.0 /base_link /camera2_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera3_tf"
+      args="-0.01 -0.3 0.0 1.570796327 0.0 0.0 /base_link /camera3_link 100" />
+   
+   <!-- Choose visualization -->
+   <arg name="rviz"       default="true" />
+   <arg name="rtabmapviz" default="false" /> 
+   
+   <!-- sync rgb/depth images per camera -->
+  <group ns="camera1">
+    <node pkg="nodelet" type="nodelet" name="nodelet_manager1" args="manager"/>
+    <node pkg="nodelet" type="nodelet" name="rgbd_sync1" args="load rtabmap_ros/rgbd_sync nodelet_manager1">
+      <remap from="rgb/image"       to="color/image_rect_color"/>
+      <remap from="depth/image"     to="aligned_depth_to_color/image_raw"/>
+      <remap from="rgb/camera_info" to="color/camera_info"/>
+      <param name="approx"          value="false"/>
+    </node>
+  </group>
+
+  <group ns="camera2">
+    <node pkg="nodelet" type="nodelet" name="nodelet_manager2" args="manager"/>
+    <node pkg="nodelet" type="nodelet" name="rgbd_sync2" args="load rtabmap_ros/rgbd_sync nodelet_manager2">
+      <remap from="rgb/image"       to="color/image_rect_color"/>
+      <remap from="depth/image"     to="aligned_depth_to_color/image_raw"/>
+      <remap from="rgb/camera_info" to="color/camera_info"/>
+      <param name="approx"          value="false"/>
+    </node>
+  </group>
+
+  <group ns="camera3">
+    <node pkg="nodelet" type="nodelet" name="nodelet_manager3" args="manager"/>
+    <node pkg="nodelet" type="nodelet" name="rgbd_sync3" args="load rtabmap_ros/rgbd_sync nodelet_manager3">
+      <remap from="rgb/image"       to="color/image_rect_color"/>
+      <remap from="depth/image"     to="aligned_depth_to_color/image_raw"/>
+      <remap from="rgb/camera_info" to="color/camera_info"/>
+      <param name="approx"          value="false"/>
+    </node>
+  </group>
+
+  <group ns="rtabmap">
+
+    <!-- Odometry -->
+    <node pkg="rtabmap_ros" type="rgbd_odometry" name="rgbd_odometry" output="screen">
+      <remap from="rgbd_image0"       to="/camera1/rgbd_image"/>
+      <remap from="rgbd_image1"       to="/camera2/rgbd_image"/>
+      <remap from="rgbd_image2"       to="/camera3/rgbd_image"/>
+
+      <param name="subscribe_rgbd"           type="bool"   value="true"/>
+      <param name="frame_id"                 type="string" value="base_link"/>
+      <param name="rgbd_cameras"             type="int"    value="3"/>
+      <param name="Vis/EstimationType"       type="string" value="0"/> <!-- should be 0 for multi-cameras -->
+      <param name="Vis/CorGuessWinSize"      type="string" value="0"/> <!-- should be 0 for multi-cameras -->
+
+    </node>
+
+    <!-- Visual SLAM (robot side) -->
+    <!-- args: "delete_db_on_start" and "udebug" -->
+    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen" args="--delete_db_on_start">
+      <param name="subscribe_depth"  type="bool"   value="false"/>
+      <param name="subscribe_rgbd"   type="bool"   value="true"/>
+      <param name="rgbd_cameras"     type="int"    value="3"/>
+      <param name="frame_id"         type="string" value="base_link"/>
+      <param name="gen_scan"         type="bool"   value="true"/>
+      <param name="map_negative_poses_ignored" type="bool"   value="false"/>        <!-- refresh grid map even if we are not moving-->
+      <param name="map_negative_scan_empty_ray_tracing" type="bool" value="false"/> <!-- don't fill empty space between the generated scans-->
+
+      <remap from="rgbd_image0"       to="/camera1/rgbd_image"/>
+      <remap from="rgbd_image1"       to="/camera2/rgbd_image"/>
+      <remap from="rgbd_image2"       to="/camera3/rgbd_image"/>
+
+      <param name="Grid/FromDepth"     type="string" value="false"/>
+      <param name="Vis/EstimationType" type="string" value="0"/> <!-- should be 0 for multi-cameras -->
+      <param name="Vis/CorGuessWinSize"      type="string" value="0"/> <!-- should be 0 for multi-cameras -->
+    </node>
+
+    <!-- Visualisation RTAB-Map -->
+    <node if="$(arg rtabmapviz)" pkg="rtabmap_ros" type="rtabmapviz" name="rtabmapviz" args="-d /opt/ros/melodic/share/rtabmap_ros/launch/config/rgbd_gui.ini" output="screen">
+      <param name="subscribe_depth"  type="bool"   value="false"/>
+      <param name="subscribe_rgbd"   type="bool"   value="true"/>
+      <param name="subscribe_odom_info" type="bool"   value="true"/>
+      <param name="frame_id"            type="string" value="base_link"/>
+      <param name="rgbd_cameras"       type="int"    value="3"/>
+
+      <remap from="rgbd_image0"       to="/camera1/rgbd_image"/>
+      <remap from="rgbd_image1"       to="/camera2/rgbd_image"/>
+      <remap from="rgbd_image2"       to="/camera3/rgbd_image"/>
+    </node>
+
+  </group>
+
+  <!-- Visualization RVIZ -->
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" args="-d /home/avl/Cotton_Imaging_Launch_Files/CottonImaging_with_three_D435is.rviz"/>
+
+</launch>
