@@ -24,21 +24,21 @@ Here's some images of the Data Acquistion phase:
      <td>Scanning at night with Artificial Lighting</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/day.jpg" width=336 height=448 ></td>
-    <td><img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/night.jpg" width=336 height=448 ></td>
+    <td><img src="https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/day.jpg" width=336 height=448 ></td>
+    <td><img src="https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/night.jpg" width=336 height=448 ></td>
   </tr>
  </table>
 
 And here's some instances of PointClouds obtained from a row during one of the scanning sessions.
 
 PointCloud Obtained from the Top Camera (Zoomed In):
-<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/top.png" alt="Top Camera Example" width="730.667" height="384">
+<img src="https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/top.png" alt="Top Camera Example" width="730.667" height="384">
 
 PointCloud Obtained from the Bottom Camera:
-<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/Bottom.png" alt="Bottom Camera Example" width="721.3333" height="282.666666667">
+<img src="https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/Bottom.png" alt="Bottom Camera Example" width="721.3333" height="282.666666667">
 
 The PointClouds being aligned with a Colored ICP algorithm in Python using the Open3D library:
-![alt text](https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/combined.png "The Two Cameras Combined using Colored ICP")
+![alt text](https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/combined.png "The Two Cameras Combined using Colored ICP")
 
 # Fruit Segmentation and Enumeration
 ## 2D
@@ -67,9 +67,9 @@ alt="Cotton Plant Phenotyping Data Acquisition System" width="720" height="405" 
 ### 3D Detection of OpenBolls using Image Processing
 
 You can see how the algorithm is detection the Open Bolls even when it is surrounded by branches:
-<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/OpenBollDetection3_Cropped.gif" alt="" width="722" height="393">
+<img src="https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/OpenBollDetection3_Cropped.gif" alt="" width="722" height="393">
 
 And here's some snapshots of the detection in 3D from different angles:
-<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/1bollDetection2_Cropped.png" alt="" width="720.5" height="393">
-<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/bollDetection3_Cropped.png" alt="" width="721.5" height="392">
-<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/bollDetection_Cropped.png" alt="" width="721.5" height="393">
+<img src="https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/1bollDetection2_Cropped.png" alt="" width="720.5" height="393">
+<img src="https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/bollDetection3_Cropped.png" alt="" width="721.5" height="392">
+<img src="https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/bollDetection_Cropped.png" alt="" width="721.5" height="393">
