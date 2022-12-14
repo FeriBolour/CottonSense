@@ -13,8 +13,8 @@ For this phase an ROS based SLAM System was designed which was assembled on a tr
 Here's a link to a video demonstrating an instance of the scanning sessions being operated on ROS:
 
 <a href="https://www.youtube.com/watch?v=mAAk02cW7og&t=1s
-" target="_blank"><img src="http://img.youtube.com/vi/KzjfbDj-uP8/0.jpg" 
-alt="Cotton Plant Phenotyping Data Acquisition System" width="640" height="360" border="10" /></a>
+" target="_blank"><img src="https://i.ytimg.com/vi/mAAk02cW7og/maxresdefault.jpg" 
+alt="Cotton Plant Phenotyping Data Acquisition System" width="720" height="405" border="10" /></a>
 
 Here's some images of the Data Acquistion phase:
 
@@ -40,19 +40,36 @@ PointCloud Obtained from the Bottom Camera:
 The PointClouds being aligned with a Colored ICP algorithm in Python using the Open3D library:
 ![alt text](https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/combined.png "The Two Cameras Combined using Colored ICP")
 
-Density Analysis of the Cotton Bolls in the Row for Yeild Analysis of the particular seed used for these plants:
-![alt text](https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/statistics.png "Density Analysis of the Cotton Bolls in a Row for Yeild Analysis")
+# Fruit Segmentation and Enumeration
+## 2D
+These videos demonstrates our Cotton Fruit Segmentation and Enumeration system. An instance segmentation model was designed and trained to segment the cotton fruits in 4 different stages of growth.
+Also, a custom tracking algorithm was implemented to correctly enumerate the number of fruits in each growth-stage throughout the video.
 
-# Organ Detection and Segmentation
+The bounding-boxes are only shown for the objects that are being tracked. These tracked objects are eventually counted (for the right class) if the required conditions are met.
 
-We are currently developing 2D and 3D detection and segmentation models. 
+Video captured and processed Mid-Season:
+<a href="https://www.youtube.com/watch?v=NsQF2HLmdNE
+" target="_blank"><img src="https://i.ytimg.com/vi/NsQF2HLmdNE/maxresdefault.jpg" 
+alt="Cotton Plant Phenotyping Data Acquisition System" width="720" height="405" border="10" /></a>
 
-Here's some results on **3D Open Boll Detection**:
+Video captured and processed Late-Season:
+<a href="https://www.youtube.com/watch?v=HPllp8o5mxc&t=5s
+" target="_blank"><img src="https://i.ytimg.com/vi/HPllp8o5mxc/sddefault.jpg" 
+alt="Cotton Plant Phenotyping Data Acquisition System" width="720" height="405" border="10" /></a>
+
+## 3D
+### 3D Segmentation by Projection
+
+<a href="https://www.youtube.com/watch?v=xKXTEIwHOng
+" target="_blank"><img src="https://i.ytimg.com/vi/xKXTEIwHOng/maxresdefault.jpg" 
+alt="Cotton Plant Phenotyping Data Acquisition System" width="720" height="405" border="10" /></a>
+
+### 3D Detection of OpenBolls using Image Processing
 
 You can see how the algorithm is detection the Open Bolls even when it is surrounded by branches:
-![alt text](https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/OpenBollDetection3_Cropped.gif)
+<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/OpenBollDetection3_Cropped.gif" alt="" width="722" height="393">
 
 And here's some snapshots of the detection in 3D from different angles:
-![alt text](https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/1bollDetection2_Cropped.png)
-![alt text](https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/bollDetection3_Cropped.png)
-![alt text](https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/bollDetection_Cropped.png)
+<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/1bollDetection2_Cropped.png" alt="" width="720.5" height="393">
+<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/bollDetection3_Cropped.png" alt="" width="721.5" height="392">
+<img src="https://github.com/FeriBolour/Cotton_Imaging/blob/main/Images/bollDetection_Cropped.png" alt="" width="721.5" height="393">
