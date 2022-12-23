@@ -1,4 +1,9 @@
-Model[[:space:]]Development/* linguist-vendored
+Model[[:space:]]Development/MaskRCNN.ipynb linguist-vendored
+Model[[:space:]]Development/MaskRCNN_Detectron2_NewBaselines.ipynb linguist-vendored
+Model[[:space:]]Development/MaskRCNN_wCustomAugmentations.ipynb linguist-vendored
+Model[[:space:]]Development/.ipynb_checkpoints/MaskRCNN-checkpoint.ipynb linguist-vendored
+Model[[:space:]]Development/.ipynb_checkpoints/MaskRCNN_Detectron2_NewBaselines-checkpoint.ipynb linguist-vendored
+Model[[:space:]]Development/.ipynb_checkpoints/MaskRCNN_wCustomAugmentations-checkpoint.ipynb linguist-vendored
 Tools/colored_pointcloud_registration.ipynb linguist-vendored
 Tools/Cotton_Plant_RGBD.ipynb linguist-vendored
 Tools/.ipynb_checkpoints/* linguist-vendored
