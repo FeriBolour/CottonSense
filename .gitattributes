@@ -1,1 +1,4 @@
 Model[[:space:]]Development/* linguist-vendored
+Tools/colored_pointcloud_registration.ipynb linguist-vendored
+Tools/Cotton_Plant_RGBD.ipynb linguist-vendored
+Tools/.ipynb_checkpoints/* linguist-vendored
