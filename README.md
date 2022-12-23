@@ -66,7 +66,7 @@ alt="Cotton Plant Phenotyping Data Acquisition System" width="720" height="405" 
 
 ### 3D Detection of OpenBolls using Image Processing
 
-You can see how the algorithm is detection the Open Bolls even when it is surrounded by branches:
+You can see how the algorithm is detecting the Open Bolls even when it is surrounded by branches and leaves:
 <img src="https://github.com/FeriBolour/cotton-phenotyping/blob/main/Images/OpenBollDetection3_Cropped.gif" alt="" width="722" height="393">
 
 And here's some snapshots of the detection in 3D from different angles:
