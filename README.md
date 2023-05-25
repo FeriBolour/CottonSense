@@ -1,4 +1,4 @@
-# High-Throughput Phenotyping of Cotton Plants
+# CottonSense: A High-Throughput Field Phenotyping System for Cotton Fruit Segmentation and Enumeration on Edge Devices
 
 Phenotype measurements of a cotton plant (such as height and of a number of cotton bolls) are currently carried out by hand. This project's goal is to allow for automatic detection and measurement of those features. To accomplish its goals, the project implements image processing and machine learning techniques. The images are captured by cameras mounted on a robot or a tractor.
 
