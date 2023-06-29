@@ -4,7 +4,7 @@ Phenotype measurements of a cotton plant (such as height and of a number of cott
 
 Solution: A graph-based SLAM system to 3D scan, segment, and count the cotton plants and their fruits using RGB-D mapping, point cloud processing techniques, and instance segmentation models. 
 
-Currently working on a publication for this work.
+Preprint of this work can be found at [CottonSense: A High-Throughput Field Phenotyping System for Cotton Fruit Segmentation and Enumeration on Edge Devices](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4469458)
 
 ## Data Acquisition
 
