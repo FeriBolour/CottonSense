@@ -6,6 +6,21 @@ Solution: A graph-based SLAM system to 3D scan, segment, and count the cotton pl
 
 This work is published at [Computers and Electronics in Agriculture](https://doi.org/10.1016/j.compag.2023.108531)
 
+## Citation
+If this repository contributed to your work please consider citing the associated paper
+```
+@article{BOLOURI2024108531,
+  title = {CottonSense: A high-throughput field phenotyping system for cotton fruit segmentation and enumeration on edge devices},
+  journal = {Computers and Electronics in Agriculture},
+  volume = {216},
+  pages = {108531},
+  year = {2024},
+  issn = {0168-1699},
+  doi = {https://doi.org/10.1016/j.compag.2023.108531},
+  url = {https://www.sciencedirect.com/science/article/pii/S0168169923009195},
+  author = {Farshad Bolouri and Yildirim Kocoglu and Irish {Lorraine B Pabuayon} and Glen {Lorin Ritchie} and Hamed Sari-Sarraf}
+}
+```
 ## Data Acquisition
 
 For this phase an ROS based SLAM System was designed which was assembled on a tractor.
